@@ -71,16 +71,7 @@ This fix problem by using synch BLOCKING api. Better will be use purely async.
 				callback(null, cache[filename]);
 			});
 		}
-		
-		// async function
-		fs.readFile(filename, 'utf8', function(err, body){
-			if(err){
-				return callback(err);
-			}
-			
-			cache[filename] = body;
-			callback(null, body);
-		});
+		...
 	}
 
 ## Async control flow patterns
