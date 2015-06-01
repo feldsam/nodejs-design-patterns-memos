@@ -326,3 +326,29 @@ There are one race condition. When spider task is invoked async and concurrently
 		...
 	}
 This prevents spidering one url multiple times.
+
+### Limited parallel execution
+Mixed sequential and parallel pattern. We have iterator function called "next" and inner loop that spawns in parallel as many task as is possible while staying within concurrency limit.
+ 
+	var tasks = [...];
+	var concurrency = 2, running = 0, completed = 0, index = 0;
+	
+	function next(){
+		while(running < concurrency && index < tasks.length){
+			task = tasks[index++];
+			task(function(){
+				if(completed === tasks.length){
+					return final();
+				}
+				completed++, running--;
+				next();
+			});
+			running++;
+		}
+	}
+	
+	next();
+	
+	function final(){
+		// all tasks completed
+	};
