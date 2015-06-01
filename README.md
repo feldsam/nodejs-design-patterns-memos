@@ -1,6 +1,6 @@
 # Nodejs design patterns
 
-This are my memoirs while reading book [Node.js Design Patterns](https://www.packtpub.com/web-development/nodejs-design-patterns)
+These are my notes from reading the book [Node.js Design Patterns](https://www.packtpub.com/web-development/nodejs-design-patterns)
 
 ## Async and sync
 
